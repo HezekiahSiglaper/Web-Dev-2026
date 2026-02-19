@@ -1,0 +1,17 @@
+<!--
+REFLECTION:
+1. What was easier about using Tailwind compared to writing custom CSS?
+   Tailwind made layout and spacing much faster. Instead of switching between HTML and a CSS file,
+   everything was right in the markup. Utility classes like flex, items-center, and p-6 replaced
+   entire CSS rule blocks instantly. Responsive design was also much simpler with md: and lg: prefixes.
+
+2. What was more challenging?
+   Replicating exact custom values like specific hex colors (#667eea) and box-shadow sizes required
+   inline styles or Tailwind's arbitrary value syntax (e.g., shadow-[0_10px_40px_rgba(0,0,0,0.2)]).
+   It also felt cluttered having so many classes on one element compared to a clean CSS class name.
+
+3. When would you choose Tailwind over traditional CSS in a real project?
+   Tailwind is great for rapid prototyping, team projects where consistency matters, and component-based
+   frameworks like React where scoped styles can get messy. Traditional CSS is better when you need
+   highly custom designs, complex animations, or want to keep HTML clean and readable.
+-->
