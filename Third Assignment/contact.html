@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Removed: <link rel="stylesheet" href="contact.css"> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;500&display=swap');
+        body { font-family: 'Lato', sans-serif; }
+        h1 { font-family: 'Playfair Display', serif; }
+        .bg-gradient-contact {
+            background: linear-gradient(135deg, #668019 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-contact min-h-screen flex flex-col items-center justify-center p-5 leading-relaxed text-gray-700">
+
+    <!-- Fixed Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-neutral-800/95 py-5 text-center shadow-md z-50">
+        <a href="index.html" class="text-slate-400 no-underline mx-5 font-medium hover:text-purple-400 transition-colors duration-300">Home</a>
+        <a href="about.html" class="text-slate-400 no-underline mx-5 font-medium hover:text-purple-400 transition-colors duration-300">About</a>
+        <a href="contact.html" class="text-slate-400 no-underline mx-5 font-medium hover:text-purple-400 transition-colors duration-300">Contact</a>
+    </nav>
+
+    <!-- Main Card -->
+    <div class="bg-white rounded-xl shadow-2xl py-16 px-10 w-full max-w-lg md:max-w-xl text-center mt-16">
+        <h1 class="text-4xl md:text-5xl font-bold mb-5 text-indigo-500">Contact Us</h1>
+        <p class="text-lg md:text-xl mb-6 text-gray-500">We'd love to hear from you. Send us a message!</p>
+
+        <!-- Contact Form -->
+        <form class="flex flex-col gap-4 mt-5">
+            <input
+                type="text"
+                placeholder="Your Name"
+                required
+                class="p-3 border-2 border-red-900 rounded-md text-base font-sans focus:outline-none focus:border-indigo-500 transition-colors duration-300"
+            >
+            <input
+                type="email"
+                placeholder="Your Email"
+                required
+                class="p-3 border-2 border-red-900 rounded-md text-base font-sans focus:outline-none focus:border-indigo-500 transition-colors duration-300"
+            >
+            <textarea
+                placeholder="Your Message"
+                rows="1"
+                required
+                class="p-3 border-2 border-red-900 rounded-md text-base font-sans resize-y focus:outline-none focus:border-indigo-500 transition-colors duration-300"
+            ></textarea>
+            <button
+                type="submit"
+                class="inline-block py-3 px-8 bg-indigo-900 text-white rounded-md font-medium cursor-pointer border-none hover:bg-purple-500 transition-colors duration-300"
+            >
+                Send Message
+            </button>
+        </form>
+    </div>
+
+</body>
+</html>
