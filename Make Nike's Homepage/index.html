@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nike – Just Do It</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --nike-orange: #FF6B00; }
+    body { font-family: 'Barlow', sans-serif; background: #fff; overflow-x: hidden; }
+    .bebas { font-family: 'Bebas Neue', sans-serif; }
+    .hero-bg {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 40%, #16213e 70%, #0f3460 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(255,107,0,0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .swoosh-shadow { filter: drop-shadow(0 0 60px rgba(255,107,0,0.4)); }
+    .card-hover { transition: transform 0.35s cubic-bezier(.25,.8,.25,1), box-shadow 0.35s ease; }
+    .card-hover:hover { transform: translateY(-8px); box-shadow: 0 24px 60px rgba(0,0,0,0.18); }
+    .btn-primary {
+      background: #111;
+      color: #fff;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--nike-orange); transform: scale(1.04); }
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; width: 0; height: 2px;
+      background: #111;
+      transition: width 0.25s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+    .marquee { display: flex; gap: 3rem; animation: marquee 18s linear infinite; white-space: nowrap; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .product-img-bg { background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%); }
+    .orange-accent { color: var(--nike-orange); }
+    .tag { background: var(--nike-orange); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 2px; text-transform: uppercase; }
+    .hero-text-glow { text-shadow: 0 0 80px rgba(255,107,0,0.3); }
+    input:focus { outline: none; border-color: #111; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+    <!-- Logo -->
+    <a href="#" class="flex-shrink-0">
+      <svg width="60" height="22" viewBox="0 0 60 22" fill="none">
+        <path d="M5.5 21L60 3.5L23 21C19.5 22.5 14 22 12 19.5C10 17 11 13 14.5 11.5L55 0L0 18.5L5.5 21Z" fill="#111"/>
+      </svg>
+    </a>
+    <!-- Links -->
+    <div class="hidden md:flex items-center gap-8 text-sm font-600 font-semibold tracking-wide">
+      <a href="#" class="nav-link text-gray-700 hover:text-black">New & Featured</a>
+      <a href="#" class="nav-link text-gray-700 hover:text-black">Men</a>
+      <a href="#" class="nav-link text-gray-700 hover:text-black">Women</a>
+      <a href="#" class="nav-link text-gray-700 hover:text-black">Kids</a>
+      <a href="#" class="nav-link text-gray-700 hover:text-black">Sale</a>
+    </div>
+    <!-- Icons -->
+    <div class="flex items-center gap-4">
+      <button class="p-2 hover:bg-gray-100 rounded-full transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <button class="p-2 hover:bg-gray-100 rounded-full transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </button>
+      <button class="p-2 hover:bg-gray-100 rounded-full transition relative">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="absolute -top-1 -right-1 bg-orange-500 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold">3</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-bg min-h-screen flex flex-col justify-center items-center text-center px-6 py-24 relative">
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <!-- BG text -->
+    <div class="bebas absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-[0.03] text-[28vw] leading-none select-none">NIKE</div>
+  </div>
+  <div class="relative z-10 max-w-4xl mx-auto">
+    <div class="tag mb-6 inline-block">New Arrival – Spring 2026</div>
+    <h1 class="bebas text-white text-[clamp(5rem,14vw,14rem)] leading-none hero-text-glow mb-4 tracking-tight">
+      JUST<br/><span class="orange-accent">DO IT.</span>
+    </h1>
+    <p class="text-gray-300 text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed font-medium">
+      Engineered for the relentless. Built for every road, track, and moment that defines you.
+    </p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="#products" class="btn-primary px-10 py-4 rounded-full font-bold text-sm tracking-widest uppercase">Shop Now</a>
+      <a href="#" class="border border-white text-white px-10 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-white hover:text-black transition">Explore</a>
+    </div>
+  </div>
+  <!-- Shoe image placeholder -->
+  <div class="relative z-10 mt-16 swoosh-shadow">
+    <div class="w-[400px] md:w-[600px] h-[200px] md:h-[280px] mx-auto flex items-center justify-center">
+      <svg viewBox="0 0 600 240" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <!-- Stylized shoe silhouette -->
+        <defs>
+          <linearGradient id="shoeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#FF6B00;stop-opacity:1"/>
+            <stop offset="50%" style="stop-color:#cc4400;stop-opacity:1"/>
+            <stop offset="100%" style="stop-color:#111;stop-opacity:1"/>
+          </linearGradient>
+          <linearGradient id="soleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#e5e5e5"/>
+            <stop offset="100%" style="stop-color:#aaa"/>
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="8" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <!-- Sole -->
+        <ellipse cx="300" cy="215" rx="220" ry="18" fill="url(#soleGrad)" opacity="0.7"/>
+        <!-- Midsole -->
+        <path d="M80 200 Q100 185 300 182 Q480 179 520 195 Q500 215 300 218 Q100 221 80 200Z" fill="#ddd"/>
+        <!-- Upper body -->
+        <path d="M95 198 Q120 140 200 115 Q270 95 350 100 Q420 105 480 130 Q510 145 520 160 L520 195 Q480 180 300 182 Q130 184 95 198Z" fill="url(#shoeGrad)" filter="url(#glow)"/>
+        <!-- Toe box -->
+        <path d="M95 198 Q90 175 110 155 Q130 135 180 120 Q150 140 120 165 Q100 180 95 198Z" fill="rgba(0,0,0,0.2)"/>
+        <!-- Swoosh -->
+        <path d="M180 160 Q240 130 340 145 Q380 150 410 140 Q360 170 280 170 Q230 170 180 160Z" fill="white" opacity="0.9"/>
+        <!-- Laces -->
+        <line x1="230" y1="118" x2="270" y2="115" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="235" y1="128" x2="278" y2="124" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="240" y1="138" x2="286" y2="133" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="245" y1="148" x2="292" y2="143" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Heel tab -->
+        <path d="M490 130 Q510 120 515 135 Q515 155 510 165 L480 130Z" fill="rgba(255,255,255,0.15)"/>
+        <!-- Shadow on ground -->
+        <ellipse cx="310" cy="225" rx="200" ry="10" fill="rgba(255,107,0,0.15)" filter="url(#glow)"/>
+      </svg>
+    </div>
+  </div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <svg class="w-6 h-6 text-white opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+  </div>
+</section>
+
+<!-- MARQUEE TICKER -->
+<div class="bg-black text-white py-3 overflow-hidden">
+  <div class="flex overflow-hidden">
+    <div class="marquee text-sm font-semibold tracking-widest uppercase text-gray-300">
+      <span>New Arrivals</span><span class="orange-accent">✦</span>
+      <span>Air Max 2026</span><span class="orange-accent">✦</span>
+      <span>Free 5.0</span><span class="orange-accent">✦</span>
+      <span>Jordan Retro</span><span class="orange-accent">✦</span>
+      <span>Just Do It</span><span class="orange-accent">✦</span>
+      <span>React Infinity</span><span class="orange-accent">✦</span>
+      <span>Members Exclusive</span><span class="orange-accent">✦</span>
+      <span>Spring Drop</span><span class="orange-accent">✦</span>
+      <!-- duplicate for seamless loop -->
+      <span>New Arrivals</span><span class="orange-accent">✦</span>
+      <span>Air Max 2026</span><span class="orange-accent">✦</span>
+      <span>Free 5.0</span><span class="orange-accent">✦</span>
+      <span>Jordan Retro</span><span class="orange-accent">✦</span>
+      <span>Just Do It</span><span class="orange-accent">✦</span>
+      <span>React Infinity</span><span class="orange-accent">✦</span>
+      <span>Members Exclusive</span><span class="orange-accent">✦</span>
+      <span>Spring Drop</span><span class="orange-accent">✦</span>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="py-20 px-6 max-w-7xl mx-auto">
+  <h2 class="bebas text-5xl md:text-6xl text-black mb-2">Shop By Category</h2>
+  <p class="text-gray-500 mb-12 text-lg">Find your perfect fit for every activity</p>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <!-- Cat 1 -->
+    <div class="card-hover cursor-pointer group relative overflow-hidden rounded-2xl h-56 md:h-72 bg-gray-900 flex items-end p-5">
+      <div class="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-700 opacity-80 group-hover:opacity-100 transition"></div>
+      <div class="absolute inset-0 flex items-center justify-center text-white opacity-10">
+        <svg class="w-32 h-32" viewBox="0 0 100 100" fill="currentColor"><path d="M50 10 C20 10 10 40 20 60 C30 80 70 80 80 60 C90 40 80 10 50 10Z"/></svg>
+      </div>
+      <div class="relative z-10">
+        <span class="block text-white opacity-70 text-xs font-semibold tracking-widest uppercase mb-1">Performance</span>
+        <span class="block text-white bebas text-3xl">Running</span>
+      </div>
+    </div>
+    <!-- Cat 2 -->
+    <div class="card-hover cursor-pointer group relative overflow-hidden rounded-2xl h-56 md:h-72 bg-gray-100 flex items-end p-5">
+      <div class="absolute inset-0 bg-gradient-to-br from-gray-800 to-black opacity-0 group-hover:opacity-60 transition"></div>
+      <div class="relative z-10">
+        <span class="block text-gray-500 text-xs font-semibold tracking-widest uppercase mb-1">Court</span>
+        <span class="block text-gray-900 group-hover:text-white bebas text-3xl transition">Basketball</span>
+      </div>
+      <div class="absolute top-4 right-4 text-6xl opacity-10">🏀</div>
+    </div>
+    <!-- Cat 3 -->
+    <div class="card-hover cursor-pointer group relative overflow-hidden rounded-2xl h-56 md:h-72 flex items-end p-5" style="background:linear-gradient(135deg,#e8f5e9,#a5d6a7)">
+      <div class="absolute inset-0 bg-gradient-to-t from-green-900 to-transparent opacity-0 group-hover:opacity-60 transition"></div>
+      <div class="relative z-10">
+        <span class="block text-green-800 text-xs font-semibold tracking-widest uppercase mb-1">Training</span>
+        <span class="block text-green-900 group-hover:text-white bebas text-3xl transition">Fitness</span>
+      </div>
+    </div>
+    <!-- Cat 4 -->
+    <div class="card-hover cursor-pointer group relative overflow-hidden rounded-2xl h-56 md:h-72 bg-black flex items-end p-5">
+      <div class="absolute inset-0 bg-gradient-to-br from-purple-900 to-blue-900 opacity-80 group-hover:opacity-100 transition"></div>
+      <div class="relative z-10">
+        <span class="block text-purple-300 text-xs font-semibold tracking-widest uppercase mb-1">Lifestyle</span>
+        <span class="block text-white bebas text-3xl">Jordan</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="py-20 bg-gray-50 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-end justify-between mb-12">
+      <div>
+        <h2 class="bebas text-5xl md:text-6xl text-black mb-1">Featured Drops</h2>
+        <p class="text-gray-500 text-lg">The latest from Nike's innovation labs</p>
+      </div>
+      <a href="#" class="hidden md:inline-flex items-center gap-2 text-sm font-bold tracking-wide hover:text-orange-500 transition">
+        View All
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Product 1 -->
+      <div class="card-hover bg-white rounded-2xl overflow-hidden group cursor-pointer">
+        <div class="product-img-bg h-52 flex items-center justify-center relative overflow-hidden">
+          <div class="tag absolute top-3 left-3">New</div>
+          <svg viewBox="0 0 200 100" class="w-44 group-hover:scale-110 transition-transform duration-500">
+            <defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#FF6B00"/><stop offset="100%" style="stop-color:#cc4400"/></linearGradient></defs>
+            <ellipse cx="100" cy="88" rx="85" ry="8" fill="#ddd"/>
+            <path d="M20 84 Q30 55 70 40 Q110 28 150 38 Q170 45 180 58 L180 78 Q150 68 100 70 Q50 72 20 84Z" fill="url(#g1)"/>
+            <path d="M60 54 Q90 44 130 52 Q150 57 165 50 Q130 68 90 68 Q70 68 60 54Z" fill="white" opacity="0.9"/>
+          </svg>
+        </div>
+        <div class="p-5">
+          <div class="flex justify-between items-start mb-1">
+            <div>
+              <p class="text-xs text-gray-400 font-semibold uppercase tracking-widest mb-0.5">Men's Shoe</p>
+              <h3 class="font-bold text-gray-900 text-base">Air Max Pulse</h3>
+            </div>
+            <button class="p-1.5 hover:text-orange-500 transition">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <p class="text-sm text-gray-400 mb-3">Electric Orange / Black</p>
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-gray-900 text-lg">$149.99</span>
+            <button class="btn-primary px-4 py-2 rounded-full text-xs font-bold tracking-wide">Add to Bag</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="card-hover bg-white rounded-2xl overflow-hidden group cursor-pointer">
+        <div class="h-52 flex items-center justify-center relative overflow-hidden" style="background:linear-gradient(135deg,#1a1a2e,#16213e)">
+          <svg viewBox="0 0 200 100" class="w-44 group-hover:scale-110 transition-transform duration-500">
+            <defs><linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#6C63FF"/><stop offset="100%" style="stop-color:#3b1f8c"/></linearGradient></defs>
+            <ellipse cx="100" cy="88" rx="85" ry="8" fill="#333"/>
+            <path d="M20 84 Q30 55 70 40 Q110 28 150 38 Q170 45 180 58 L180 78 Q150 68 100 70 Q50 72 20 84Z" fill="url(#g2)"/>
+            <path d="M60 54 Q90 44 130 52 Q150 57 165 50 Q130 68 90 68 Q70 68 60 54Z" fill="white" opacity="0.8"/>
+          </svg>
+          <div class="tag absolute top-3 left-3" style="background:#6C63FF">Member</div>
+        </div>
+        <div class="p-5">
+          <div class="flex justify-between items-start mb-1">
+            <div>
+              <p class="text-xs text-gray-400 font-semibold uppercase tracking-widest mb-0.5">Lifestyle</p>
+              <h3 class="font-bold text-gray-900 text-base">Jordan Retro 4</h3>
+            </div>
+            <button class="p-1.5 hover:text-orange-500 transition">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <p class="text-sm text-gray-400 mb-3">Midnight Purple</p>
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-gray-900 text-lg">$219.00</span>
+            <button class="btn-primary px-4 py-2 rounded-full text-xs font-bold tracking-wide">Add to Bag</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="card-hover bg-white rounded-2xl overflow-hidden group cursor-pointer">
+        <div class="h-52 flex items-center justify-center relative overflow-hidden" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9)">
+          <svg viewBox="0 0 200 100" class="w-44 group-hover:scale-110 transition-transform duration-500">
+            <defs><linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#00C853"/><stop offset="100%" style="stop-color:#006400"/></linearGradient></defs>
+            <ellipse cx="100" cy="88" rx="85" ry="8" fill="#bbb"/>
+            <path d="M20 84 Q30 55 70 40 Q110 28 150 38 Q170 45 180 58 L180 78 Q150 68 100 70 Q50 72 20 84Z" fill="url(#g3)"/>
+            <path d="M60 54 Q90 44 130 52 Q150 57 165 50 Q130 68 90 68 Q70 68 60 54Z" fill="white" opacity="0.9"/>
+          </svg>
+          <div class="absolute top-3 left-3 bg-green-600 text-white text-xs font-bold uppercase tracking-widest px-2 py-0.5 rounded">Sale</div>
+        </div>
+        <div class="p-5">
+          <div class="flex justify-between items-start mb-1">
+            <div>
+              <p class="text-xs text-gray-400 font-semibold uppercase tracking-widest mb-0.5">Women's Shoe</p>
+              <h3 class="font-bold text-gray-900 text-base">React Infinity 4</h3>
+            </div>
+            <button class="p-1.5 hover:text-orange-500 transition">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <p class="text-sm text-gray-400 mb-3">Volt Green / White</p>
+          <div class="flex items-center gap-3 justify-between">
+            <div class="flex items-center gap-2">
+              <span class="font-bold text-gray-900 text-lg">$99.97</span>
+              <span class="text-sm text-gray-400 line-through">$140</span>
+            </div>
+            <button class="btn-primary px-4 py-2 rounded-full text-xs font-bold tracking-wide">Add to Bag</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="card-hover bg-white rounded-2xl overflow-hidden group cursor-pointer">
+        <div class="product-img-bg h-52 flex items-center justify-center relative overflow-hidden">
+          <svg viewBox="0 0 200 100" class="w-44 group-hover:scale-110 transition-transform duration-500">
+            <defs><linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#111"/><stop offset="100%" style="stop-color:#444"/></linearGradient></defs>
+            <ellipse cx="100" cy="88" rx="85" ry="8" fill="#ccc"/>
+            <path d="M20 84 Q30 55 70 40 Q110 28 150 38 Q170 45 180 58 L180 78 Q150 68 100 70 Q50 72 20 84Z" fill="url(#g4)"/>
+            <path d="M60 54 Q90 44 130 52 Q150 57 165 50 Q130 68 90 68 Q70 68 60 54Z" fill="white" opacity="0.8"/>
+            <line x1="85" y1="42" x2="105" y2="39" stroke="white" stroke-width="2"/>
+            <line x1="88" y1="48" x2="110" y2="45" stroke="white" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="p-5">
+          <div class="flex justify-between items-start mb-1">
+            <div>
+              <p class="text-xs text-gray-400 font-semibold uppercase tracking-widest mb-0.5">Training</p>
+              <h3 class="font-bold text-gray-900 text-base">Free Metcon 6</h3>
+            </div>
+            <button class="p-1.5 hover:text-orange-500 transition">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <p class="text-sm text-gray-400 mb-3">Phantom / Black</p>
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-gray-900 text-lg">$160.00</span>
+            <button class="btn-primary px-4 py-2 rounded-full text-xs font-bold tracking-wide">Add to Bag</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FULL-WIDTH BANNER -->
+<section class="relative py-28 overflow-hidden bg-black">
+  <div class="absolute inset-0 bg-gradient-to-r from-orange-600 via-orange-500 to-red-600 opacity-20"></div>
+  <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+    <p class="text-orange-400 font-bold tracking-[0.3em] uppercase text-sm mb-4">Introducing</p>
+    <h2 class="bebas text-white text-[clamp(3rem,10vw,9rem)] leading-none mb-6">Air Max 2026</h2>
+    <p class="text-gray-400 text-xl max-w-lg mx-auto mb-10">Maximum cushioning. Minimal weight. Zero compromises on the streets or the track.</p>
+    <a href="#" class="inline-block bg-white text-black font-bold px-10 py-4 rounded-full text-sm tracking-widest uppercase hover:bg-orange-500 hover:text-white transition">Shop the Collection</a>
+  </div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section class="py-20 px-6 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+  <div>
+    <p class="text-orange-500 font-bold tracking-widest text-sm uppercase mb-3">Nike Membership</p>
+    <h2 class="bebas text-5xl md:text-6xl text-black mb-5 leading-tight">Move More.<br/>Earn More.</h2>
+    <p class="text-gray-600 text-lg leading-relaxed mb-8">Become a Nike Member and get first access to the best products, inspiration, and community in sport. Free to join. Endless rewards.</p>
+    <div class="flex flex-wrap gap-4 mb-8">
+      <div class="flex items-center gap-2 text-sm font-semibold text-gray-700">
+        <span class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center text-orange-500 text-lg">✓</span> Free shipping
+      </div>
+      <div class="flex items-center gap-2 text-sm font-semibold text-gray-700">
+        <span class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center text-orange-500 text-lg">✓</span> Exclusive drops
+      </div>
+      <div class="flex items-center gap-2 text-sm font-semibold text-gray-700">
+        <span class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center text-orange-500 text-lg">✓</span> Member rewards
+      </div>
+    </div>
+    <a href="#" class="btn-primary inline-block px-10 py-4 rounded-full font-bold text-sm tracking-widest uppercase">Join Free</a>
+  </div>
+  <div class="relative">
+    <div class="bg-gradient-to-br from-orange-500 to-red-700 rounded-3xl h-72 md:h-96 flex items-center justify-center relative overflow-hidden">
+      <div class="bebas text-white opacity-10 text-[12rem] absolute">N</div>
+      <div class="relative z-10 text-center">
+        <div class="text-white text-7xl mb-4">✦</div>
+        <p class="text-white bebas text-4xl">Nike Member</p>
+        <p class="text-orange-200 text-sm mt-2 tracking-widest uppercase">Unlocked</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="bg-black py-16 px-6">
+  <div class="max-w-xl mx-auto text-center">
+    <h3 class="bebas text-4xl text-white mb-3">Stay in the Game</h3>
+    <p class="text-gray-400 mb-8 text-base">Get the latest on new drops, exclusive offers, and sports culture.</p>
+    <div class="flex gap-3">
+      <input type="email" placeholder="Enter your email" class="flex-1 px-5 py-3 rounded-full bg-gray-800 text-white border border-gray-700 text-sm placeholder-gray-500 transition"/>
+      <button class="bg-orange-500 hover:bg-orange-400 text-white font-bold px-7 py-3 rounded-full text-sm tracking-wide transition">Sign Up</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-950 text-gray-400 pt-16 pb-8 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+      <div>
+        <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">Find a Store</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="#" class="hover:text-white transition">Become a Member</a></li>
+          <li><a href="#" class="hover:text-white transition">Send Us Feedback</a></li>
+          <li><a href="#" class="hover:text-white transition">Student Discount</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">Get Help</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="#" class="hover:text-white transition">Order Status</a></li>
+          <li><a href="#" class="hover:text-white transition">Shipping & Delivery</a></li>
+          <li><a href="#" class="hover:text-white transition">Returns</a></li>
+          <li><a href="#" class="hover:text-white transition">Payment Options</a></li>
+          <li><a href="#" class="hover:text-white transition">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">About Nike</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="#" class="hover:text-white transition">News</a></li>
+          <li><a href="#" class="hover:text-white transition">Careers</a></li>
+          <li><a href="#" class="hover:text-white transition">Investors</a></li>
+          <li><a href="#" class="hover:text-white transition">Sustainability</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">Follow</h4>
+        <div class="flex gap-4">
+          <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-orange-500 rounded-full flex items-center justify-center transition">
+            <svg class="w-4 h-4 fill-current text-white" viewBox="0 0 24 24"><path d="M24 4.56v14.91A4.56 4.56 0 0 1 19.44 24H4.56A4.56 4.56 0 0 1 0 19.44V4.56A4.56 4.56 0 0 1 4.56 0h14.88A4.56 4.56 0 0 1 24 4.56zM9.6 18.24V9.36H6.96v8.88H9.6zm-1.32-10.08a1.56 1.56 0 1 0 0-3.12 1.56 1.56 0 0 0 0 3.12zm10.08 10.08v-4.8c0-2.76-1.44-3.84-3.36-3.84a2.88 2.88 0 0 0-2.64 1.44V9.36H9.72v8.88h2.64v-4.68c0-1.08.48-1.92 1.68-1.92s1.68.84 1.68 1.92v4.68h2.64z"/></svg>
+          </a>
+          <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-orange-500 rounded-full flex items-center justify-center transition">
+            <svg class="w-4 h-4 fill-current text-white" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-orange-500 rounded-full flex items-center justify-center transition">
+            <svg class="w-4 h-4 fill-current text-white" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-8 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <svg width="40" height="16" viewBox="0 0 60 22" fill="none">
+          <path d="M5.5 21L60 3.5L23 21C19.5 22.5 14 22 12 19.5C10 17 11 13 14.5 11.5L55 0L0 18.5L5.5 21Z" fill="#555"/>
+        </svg>
+        <span class="text-xs text-gray-600">© 2026 Nike, Inc. All Rights Reserved</span>
+      </div>
+      <div class="flex flex-wrap gap-5 text-xs">
+        <a href="#" class="hover:text-white transition">Guides</a>
+        <a href="#" class="hover:text-white transition">Terms of Sale</a>
+        <a href="#" class="hover:text-white transition">Terms of Use</a>
+        <a href="#" class="hover:text-white transition">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
